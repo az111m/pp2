@@ -1,0 +1,39 @@
+import math
+
+class MyShape:
+    def __init__(self, color="black", is_filled=True):
+        self.color = color
+        self.is_filled = is_filled
+
+    def __str__(self):
+        return f"Color: {self.color}, Filled: {self.is_filled}"
+
+    def getArea(self):
+        return 0
+
+class Rectangle(MyShape):
+    def __init__(self, color="black", is_filled=True, x_top_left=0, y_top_left=0, length=1, width=1):
+        super().__init__(color, is_filled)
+        self.x_top_left = x_top_left
+        self.y_top_left = y_top_left
+        self.length = length
+        self.width = width
+
+    def getArea(self):
+        return self.length * self.width
+
+    def __str__(self):
+        return f"Color: {self.color}, Filled: {self.is_filled}, X Top Left: {self.x_top_left}, Y Top Left: {self.y_top_left}, Length: {self.length}, Width: {self.width}"
+
+def create_rectangle_from_input():
+    color = input("Enter color: ")
+    is_filled = input("Is filled? (True/False): ").lower() == "true"
+    x_top_left = float(input("Enter X coordinate of top-left corner: "))
+    y_top_left = float(input("Enter Y coordinate of top-left corner: "))
+    length = float(input("Enter length: "))
+    width = float(input("Enter width: "))
+    return Rectangle(color, is_filled, x_top_left, y_top_left, length, width)
+
+rectangle = create_rectangle_from_input()
+print("Rectangle properties:", rectangle)
+print("Rectangle area:", rectangle.getArea())
